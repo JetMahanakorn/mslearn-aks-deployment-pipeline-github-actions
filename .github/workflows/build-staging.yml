@@ -62,3 +62,16 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
           resource-group: rg-learn-weu
           cluster-name: aks-learn-weu  
+
+      - name: Run Helm Deploy
+        run: |
+          helm upgrade \
+            --install \
+            --create-namespace \
+            --atomic \
+            --wait \
+            --namespace stage \
+            contoso-website \
+            ./kubernetes/contoso-website \
+            --set image.repository=${{ secrets.ACR_NAME }} \
+            --set dns.name=${{ secrets.DNS_NAME }}
