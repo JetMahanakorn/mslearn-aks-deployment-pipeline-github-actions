@@ -1,0 +1,7 @@
+image:
+  registry: acrlearnweu.azurecr.io
+  name: contoso-website
+  tag: latest
+
+dns:
+  name: 78f9b703809d4fc7a623.westeurope.aksapp.io
